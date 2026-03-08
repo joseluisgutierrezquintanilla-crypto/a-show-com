@@ -1,0 +1,281 @@
+<!DOCTYPE html>
+<html lang="en">
+    <head>
+        <meta charset="UTF-8" />
+        <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+        <title>Reservas Adolescentes Show</title>
+        <meta name="description" content="AgentUI Application" />
+        
+        <!-- Favicons -->
+        <link rel="icon" type="image/png" sizes="16x16" href="https://app.agentui.ai/favicon-16x16.png" />
+        <link rel="icon" type="image/png" sizes="32x32" href="https://app.agentui.ai/favicon-32x32.png" />
+        <link rel="apple-touch-icon" sizes="180x180" href="https://app.agentui.ai/apple-touch-icon.png" />
+        
+        <!-- PWA Manifest -->
+        <link rel="manifest" href="/assets/manifest.json" />
+        <meta name="theme-color" content="#ffffff" />
+        
+        
+        <!-- Open Graph / Facebook -->
+        <meta property="og:type" content="website" />
+        <meta property="og:url" content="https://api.agentui.ai/apps/cmm5ygunt0s0is51wefzvyksb" />
+        <meta property="og:title" content="Reservas Adolescentes Show" />
+        <meta property="og:description" content="AgentUI Application" />
+        <meta property="og:image" content="https://app.agentui.ai/android-chrome-512x512.png" />
+        
+        <!-- Twitter -->
+        <meta property="twitter:card" content="summary_large_image" />
+        <meta property="twitter:url" content="https://api.agentui.ai/apps/cmm5ygunt0s0is51wefzvyksb" />
+        <meta property="twitter:title" content="Reservas Adolescentes Show" />
+        <meta property="twitter:description" content="AgentUI Application" />
+        <meta property="twitter:image" content="https://app.agentui.ai/android-chrome-512x512.png" />
+
+        <!-- Tailwind CSS is compiled via Vite/PostCSS from index.css -->
+        <script>
+            // Inject environment variables and config for component access
+            window.__ENV__ = {"DATABASE_PROXY":"https://api.agentui.ai/databases/records","PROXY_INTEGRATION_URL":"https://api.agentui.ai/proxy"};
+            window.__CONFIG__ = {"apiKey":"35f56bcf-4e49-4e94-9a65-2147960cfee7","workflowId":"cmm5ygtbr0thfs21fzawku6du","allowSelfSignup":false,"integrations":{"chatgpt":"chatgpt","openai":"chatgpt"},"environment":"production"};
+            
+            // Set up global process and config objects BEFORE any modules load
+            // This ensures components can use process.env.X directly
+            window.process = {
+                env: window.__ENV__
+            };
+            window.config = window.__CONFIG__;
+            
+            // Also set on globalThis for ES module compatibility
+            globalThis.process = window.process;
+            globalThis.config = window.config;
+            
+            // For backward compatibility
+            if (typeof self !== 'undefined') {
+                self.process = window.process;
+                self.config = window.config;
+            }
+        </script>
+        <script>
+            // Console interception - runs BEFORE any modules load
+            (function() {
+                var originalLog = console.log;
+                var originalInfo = console.info;
+                var originalWarn = console.warn;
+                var originalError = console.error;
+
+                function sendToParent(message, type) {
+                    if (window.parent && window.parent !== window) {
+                        try {
+                            window.parent.postMessage({
+                                type: type,
+                                message: message,
+                                timestamp: Date.now(),
+                                source: "component-iframe"
+                            }, "*");
+                        } catch (e) {}
+                    }
+                }
+
+                function argsToString(args) {
+                    return Array.from(args).map(function(arg) {
+                        if (arg instanceof Error) return "Error: " + arg.message;
+                        if (typeof arg === "object" && arg !== null) {
+                            try { return JSON.stringify(arg); } catch (e) { return String(arg); }
+                        }
+                        return String(arg);
+                    }).join(" ");
+                }
+
+                console.log = function() {
+                    sendToParent(argsToString(arguments), "CONSOLE_LOG");
+                    return originalLog.apply(console, arguments);
+                };
+
+                console.info = function() {
+                    sendToParent(argsToString(arguments), "CONSOLE_INFO");
+                    return originalInfo.apply(console, arguments);
+                };
+
+                console.warn = function() {
+                    var msg = argsToString(arguments);
+                    if (msg.indexOf("React Router") === -1 && msg.indexOf("v7_") === -1 && msg.indexOf("cdn.tailwindcss") === -1) {
+                        sendToParent(msg, "CONSOLE_WARN");
+                    }
+                    return originalWarn.apply(console, arguments);
+                };
+
+                console.error = function() {
+                    sendToParent(argsToString(arguments), "CONSOLE_ERROR");
+                    return originalError.apply(console, arguments);
+                };
+
+                window.__originalConsole = { log: originalLog, info: originalInfo, warn: originalWarn, error: originalError };
+            })();
+        </script>
+        <script>
+            // Element selection bridge - enables visual editor mode from parent
+            (function() {
+                var selectMode = false;
+                var highlightOverlay = null;
+                var lastTarget = null;
+
+                function createOverlay() {
+                    if (highlightOverlay) return highlightOverlay;
+                    highlightOverlay = document.createElement("div");
+                    highlightOverlay.id = "__select-overlay__";
+                    highlightOverlay.style.cssText =
+                        "position:fixed;pointer-events:none;border:2px solid #3b82f6;" +
+                        "background:rgba(59,130,246,0.08);z-index:999999;transition:all 0.1s ease;" +
+                        "border-radius:4px;display:none;";
+                    var label = document.createElement("div");
+                    label.id = "__select-label__";
+                    label.style.cssText =
+                        "position:absolute;top:-22px;left:0;background:#3b82f6;color:#fff;" +
+                        "font-size:11px;padding:1px 6px;border-radius:3px 3px 0 0;" +
+                        "font-family:monospace;white-space:nowrap;";
+                    highlightOverlay.appendChild(label);
+                    document.body.appendChild(highlightOverlay);
+                    return highlightOverlay;
+                }
+
+                function positionOverlay(el) {
+                    var ov = createOverlay();
+                    var r = el.getBoundingClientRect();
+                    ov.style.top = r.top + "px";
+                    ov.style.left = r.left + "px";
+                    ov.style.width = r.width + "px";
+                    ov.style.height = r.height + "px";
+                    ov.style.display = "block";
+                    var tag = el.tagName.toLowerCase();
+                    var cls = el.className && typeof el.className === "string"
+                        ? "." + el.className.trim().split(/\s+/).slice(0, 2).join(".")
+                        : "";
+                    var id = el.id ? "#" + el.id : "";
+                    ov.querySelector("#__select-label__").textContent = tag + id + cls;
+                }
+
+                function hideOverlay() {
+                    if (highlightOverlay) highlightOverlay.style.display = "none";
+                }
+
+                function findComponentName(el) {
+                    var node = el;
+                    while (node && node !== document.body) {
+                        var fiber = null;
+                        for (var key in node) {
+                            if (key.startsWith("__reactFiber$") || key.startsWith("__reactInternalInstance$")) {
+                                fiber = node[key]; break;
+                            }
+                        }
+                        if (fiber) {
+                            var f = fiber;
+                            while (f) {
+                                if (f.type && typeof f.type === "function" && f.type.name
+                                    && f.type.name !== "Fragment" && !f.type.name.startsWith("_")) {
+                                    return f.type.name;
+                                }
+                                f = f.return;
+                            }
+                        }
+                        node = node.parentElement;
+                    }
+                    return null;
+                }
+
+                function onMouseMove(e) {
+                    if (!selectMode) return;
+                    var t = e.target;
+                    if (t === highlightOverlay || (highlightOverlay && highlightOverlay.contains(t))) return;
+                    if (t === lastTarget) return;
+                    lastTarget = t;
+                    positionOverlay(t);
+                }
+
+                function onMouseClick(e) {
+                    if (!selectMode) return;
+                    e.preventDefault();
+                    e.stopPropagation();
+                    var t = e.target;
+                    if (t === highlightOverlay || (highlightOverlay && highlightOverlay.contains(t))) return;
+                    var compName = findComponentName(t);
+                    var textContent = (t.textContent || "").trim().substring(0, 100);
+                    if (window.parent && window.parent !== window) {
+                        window.parent.postMessage({
+                            type: "ELEMENT_SELECTED",
+                            element: {
+                                tagName: t.tagName.toLowerCase(),
+                                id: t.id || null,
+                                className: typeof t.className === "string" ? t.className : "",
+                                textContent: textContent,
+                                componentName: compName,
+                            },
+                            timestamp: Date.now(),
+                            source: "component-iframe"
+                        }, "*");
+                    }
+                }
+
+                window.addEventListener("message", function(ev) {
+                    if (ev.data && ev.data.type === "ENABLE_SELECT_MODE") {
+                        selectMode = true;
+                        document.body.style.cursor = "crosshair";
+                        createOverlay();
+                    }
+                    if (ev.data && ev.data.type === "DISABLE_SELECT_MODE") {
+                        selectMode = false;
+                        document.body.style.cursor = "";
+                        hideOverlay();
+                        lastTarget = null;
+                    }
+                });
+
+                document.addEventListener("mousemove", onMouseMove, true);
+                document.addEventListener("click", onMouseClick, true);
+            })();
+        </script>
+        <style>
+            .agentui-badge {
+                position: fixed !important;
+                bottom: 16px !important;
+                right: 16px !important;
+                background: linear-gradient(135deg, #667eea 0%, #764ba2 100%) !important;
+                color: white !important;
+                padding: 8px 16px !important;
+                border-radius: 20px !important;
+                font-size: 12px !important;
+                font-weight: 500 !important;
+                font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, 'Helvetica Neue', Arial, sans-serif;
+                box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1), 0 2px 4px rgba(0, 0, 0, 0.06) !important;
+                z-index: 9999 !important;
+                display: flex !important;
+                align-items: center !important;
+                gap: 6px !important;
+                text-decoration: none !important;
+                transition: transform 0.2s, box-shadow 0.2s;
+            }
+            .agentui-badge:hover {
+                transform: translateY(-2px) !important;
+                box-shadow: 0 6px 8px rgba(0, 0, 0, 0.15), 0 4px 6px rgba(0, 0, 0, 0.1) !important;
+            }
+            .agentui-badge:active {
+                transform: translateY(0) !important;
+            }
+            @media (max-width: 640px) {
+                .agentui-badge {
+                    bottom: 12px !important;
+                    right: 12px !important;
+                    font-size: 11px !important;
+                    padding: 6px 12px !important;
+                }
+            }
+        </style>
+      <script type="module" crossorigin src="/assets/index.js"></script>
+      <link rel="stylesheet" crossorigin href="/assets/index.css">
+    </head>
+    <body>
+        <div id="root"></div>
+        <a href="https://agentui.ai?utm_source=user-app&utm_medium=badge&utm_campaign=user-app&utm_content=build_with_agentui" target="_blank" rel="noopener noreferrer" class="agentui-badge">
+            <span>Built with</span>
+            <span style="font-weight: 600;">AgentUI</span>
+        </a>
+        
+    </body>
+</html>
